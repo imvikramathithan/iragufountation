@@ -5,14 +5,14 @@
             <img src="{{asset('assets/img/logo_text.jpg')}}"alt="logo" class="campimg2">
             <img src="{{asset('assets/img/arflogo.webp')}}"alt="logo" class="campimg3">
         </div><hr>
-        <h1 class="display camptexthead text-center">Join Hands with Us</h1>
+        <h1 class="display camptexthead text-center animate-zoom-in">Join Hands with Us</h1>
         <div class="camp">
             <a href="https://www.instagram.com/iragu_foundation?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fa-brands fa-square-instagram"></i>
                 <p class="camtext lightfont">arf_acadamy</p>
             </a><br><br>
         </div>
         <div class="camp-container camp-bottom">
-                    <div class="camp-column" onclick="expandColumn(this)">
+                    <div class="camp-column animate-slide-left" onclick="expandColumn(this)">
                         <h2>Uplift the society</h2>
                         <p class="lightfont">
                         Join us in our activity to develop our society through education!
@@ -24,7 +24,7 @@
                         your hearty contribution to the uplift of our society.
                         </p>
                     </div>
-                    <div class="camp-column" onclick="expandColumn(this)">
+                    <div class="camp-column animate-slide-up" onclick="expandColumn(this)">
                         <h2>Through Social media</h2>
                         <p class="lightfont">
                         Social media is an immortal platform to build a helpi   ng hand community
@@ -36,7 +36,7 @@
                         for many social activities for the student’s education.
                         </p>
                     </div>
-                    <div class="camp-column" onclick="expandColumn(this)">
+                    <div class="camp-column animate-slide-right" onclick="expandColumn(this)">
                         <h2>Gift to loved ones</h2>
                         <p class="lightfont">
                         In the name of ARF Academy, Iragu Foundation conducts various
@@ -51,7 +51,7 @@
         </div>
 
         <div class="row">
-            <h1 class="display camptexthead text-center">Free Camps</h1>
+            <h1 class="display camptexthead text-center animate-zoom-in">Free Camps</h1>
             <br>
             <div class="col-md-6">
                 <div id="carouselExampleDark" class="carousel slide">

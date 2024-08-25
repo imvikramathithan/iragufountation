@@ -7,9 +7,11 @@
                         <img class="sfshlogo"  src="{{asset('assets/img/logoletter-removebg-preview.png')}}" alt=""/>
                     </div>
                     <div class="sr-col sfsh-col">
-                      <h4 class="sub-head">Why handwriting is important ?</h4>
+                      <div class="" style="overflow: hidden">
+                        <h4 class="sub-head animate-slide-right">Why handwriting is important ?</h4>
                         <p class="lightfont  sfsh-p"> <img class="logo-point" src="{{asset('assets/img/logoletter-removebg-preview.png')}}" alt="" srcset=""> Handwriting is an simple and unique skills for both children and adults. Handwriting skills activates the brain more than typing skills because it involves more complex cognitive skills. It also contribute reading fluency its operate visual representation of letters. We can predict a success for children who have good handwriting skills has a positive impact on grades.
                         </p>
+                      </div>
                     </div>
       </div>
     </div>  
@@ -35,7 +37,7 @@
           </svg>
   </div>
   <div class="unique-tech">
-      <div class="text-center display">Our unique techniques</div>
+      <div class="display text-center animate-zoom-in">Our unique techniques</div>
       <div class="row text-center">
         <div class="col unique-tech-hide">
           <h3>Slant</h3>
@@ -56,4 +58,13 @@
   </div>
 </div>
 <x-sfs-handwriting/>
+<script>
+ //loader
+var loader = document.getElementById("preloader");
+
+window.addEventListener("load", function () {
+    loader.style.display = "none";
+});
+</script>
+<script src="{{asset('assets/js/scrollreveal.js')}}"></script>
 @endsection

@@ -1,8 +1,8 @@
-<div class="container service-page">
-        <div class="display text-center">Services</div>
+<div class="container service-page ">
+        <div class="display text-center animate-bounce">Services</div>
         <hr>
             <div class="row">
-                <div class="col">
+                <div class="col animate-slide-left">
                         <div class="service-card">
                             <div class="service-head">
                                 <img src="{{asset('assets/img/arflogo.webp')}}" class="image-fluid service-image" alt="">
@@ -17,7 +17,7 @@
                             </div>
                         </div>    
                 </div>
-                <div class="col">
+                <div class="col animate-slide-up">
                         <div class="service-card">
                             <div class="service-head">
                                 <img src="{{asset('assets/img/FocusEng.webp')}}" class="image-fluid service-image" alt="" style="background-color: #ffffff">
@@ -30,7 +30,7 @@
                             </div>
                         </div>    
                 </div>
-                <div class="col">
+                <div class="col animate-slide-right">
                         <div class="service-card">
                             <div class="service-head">
                                 <img src="{{asset('assets/img/liledison.webp')}}" class="image-fluid service-image" alt="">
@@ -47,3 +47,6 @@
             </div>
         </div>
     </div>        
+
+
+<script src="{{asset('assets/js/scrollreveal.js')}}"></script>

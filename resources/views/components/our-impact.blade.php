@@ -1,7 +1,7 @@
 {{-- Our Impact --}}
 <div class="imp">
     <div class="container con-height">
-        <h1 class="display text-center">Our Impact</h1>
+        <h1 class="display text-center animate-zoom-in">Our Impact</h1>
         <hr>
         <div class="row">
                     <div class="col-md-4 col-sm-4 text-center imp-count-all">

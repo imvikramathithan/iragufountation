@@ -358,3 +358,9 @@ function expandColumn(element) {
     element.classList.add("expanded");
 }
 
+//loader
+var loader = document.getElementById("preloader");
+
+window.addEventListener("load", function () {
+    loader.style.display = "none";
+});

@@ -2,7 +2,7 @@
 <section class="container " id="gallery">
 
    <br><br><br>
-   <div class="display text-center">Gallery</div>
+   <div class="display text-center animate-zoom-in">Gallery</div>
    <hr>
  <!-- gallery -->
     <div class="gallery">

@@ -7,7 +7,6 @@
 
     <!--=============== REMIXICONS ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Ballet:opsz@16..72&family=Carattere&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merienda:wght@300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rasa:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
@@ -19,8 +18,11 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   
 </head>
             <body>
+                <div id="preloader">
+                </div>
                     <!-- Header   -->
                     <header class="fixed-top">
                             <nav class="navbar navbar-expand-lg bg-s-color">
@@ -235,7 +237,7 @@
                         <br> <br> <br>
                         <div class="row">
                             <div class="col-md-3" id="contactus">
-                                <h6 class="foot-iragu-title"> <b>For Students</b></h6>
+                                <h6 class="foot-iragu-title animate-slide-right"> <b>For Students</b></h6>
                                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
                                 <ul class="navbar-nav ms-auto">
                                 <li class="nav-item">
@@ -251,7 +253,7 @@
                         </ul>
                             </div>
                             <div class="col-md-3">
-                                <h6 class="foot-iragu-title"> <b>For Management</b></h6>
+                                <h6 class="foot-iragu-title animate-slide-right"> <b>For Management</b></h6>
                                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
@@ -281,7 +283,7 @@
                                 </ul>
                             </div>
                             <div class="col-md-3">
-                                <h6 class="foot-iragu-title"><b>Iragu Fountation</b></h6>
+                                <h6 class="foot-iragu-title animate-slide-right"><b>Iragu Fountation</b></h6>
                                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
@@ -327,6 +329,8 @@
             <!--endfooter-->
                         <!--=============== SWIPER JS ===============-->
                     <script src="{{asset('assets/js/swiper-bundle.min.js')}}"></script>
+                    <script src="{{asset('assets/js/animate.js')}}"></script>
+                    <script src="{{asset('assets/js/scrollreveal.js')}}"></script>
                     <script src="{{asset('assets/js/script.js')}}"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -340,5 +344,7 @@
 
                 gtag('config', 'G-61GMY34KF4');
                 </script>
+
+                
             </body>
   </html>

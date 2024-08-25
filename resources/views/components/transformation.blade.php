@@ -2,7 +2,7 @@
                <!-- breaking -->
                <div class="container con-height transform" id="tranformation">
                 <br><br>
-                <div class="display text-center">Transformation</div>
+                <div class="display text-center animate-zoom-in">Transformation</div>
                 <hr>
                 <div class="row mb-4">
                     <div class="col-md-12">

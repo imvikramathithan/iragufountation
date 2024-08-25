@@ -8,6 +8,26 @@ body {
     margin: 0;
     padding: 0;
 }
+#preloader {
+    background-color: #ffffff;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 2000;
+}
+
+#preloader::before {
+    content: "";
+    background: url(../../preloader.gif) no-repeat center center;
+    background-size: 10%;
+    opacity: 0.5;
+    /* Adjust the opacity of the GIF */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
 .campdis {
     display: none;
@@ -1659,6 +1679,10 @@ a {
 .foot-iragu-title {
     font-size: 22px;
 }
+.lead-add{
+    font-size: 16px;
+
+}
 .btn-call {
     width: 25%;
     height: 10%;
@@ -1839,13 +1863,13 @@ div#settingupschool {
     margin-top: 68px;
 }
 .sfslogo {
-    width: 121%;
+    width:84%;
     position: static;
     margin: 0px 0px 33px -74px;
 }
 .calli {
     font-weight: 1000;
-    font-size: 60px;
+    font-size: 46px;
     color: #ff0000;
     text-transform: uppercase;
     margin-left: -45px;

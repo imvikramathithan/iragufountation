@@ -1,6 +1,6 @@
 <section class="container " id="testimonials">
     <br><br><br><br><br>
-    <div class="display text-center">Testimonials</div>
+    <div class="display text-center animate-zoom-in">Testimonials</div>
     <hr>
      <div class="test_card_wrapper">
       <div class="test_card_container" id="test_cardContainer">

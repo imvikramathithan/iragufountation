@@ -1,6 +1,6 @@
 {{--Iragu Team--}}
 <div class="container team-con ">
-    <h1 class="display text-center">Our Team</h1><hr>
+    <h1 class="display text-center animate-zoom-in">Our Team</h1><hr>
      <div class="row  team-row">
          <div class="col-md-4">
              <img class="teamlogo" src="{{asset('assets/img/Iragu_Foundation.webp')}}" alt="">
