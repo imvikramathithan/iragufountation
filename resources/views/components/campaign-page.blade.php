@@ -55,31 +55,28 @@
             <br>
             <div class="col-md-6">
                 <div id="carouselExampleDark" class="carousel slide">
-                        <div class="carousel-indicators camp-indicators">
-                            @foreach($imagePaths as $index => $imagePath)
-                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="true" aria-label="Slide {{ $index + 1 }}"></button>
-                            @endforeach
-                        </div>
-                        <div class="carousel-inner camp-slide">
-                            @foreach($imagePaths as $index => $imagePath)
-                                <div class="carousel-item  {{ $index == 0 ? 'active' : '' }} camp-slide-img" data-bs-interval="{{ ($index % 3 + 1) * 2000 }}">
-                                    <img src="{{ $imagePath }}" class="d-block w-100 campSlide-img" alt="Slide {{ $index + 1 }}">
-                                    {{-- <div class="carousel-caption d-none d-md-block">
-                                        <h5>Slide {{ $index + 1 }} label</h5>
-                                        <p>Some representative placeholder content for slide {{ $index + 1 }}.</p>
-                                    </div> --}}
-                                </div>
-                            @endforeach
-                        </div>
-                        <button class="carousel-control-prev camp-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next camp-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                    <div class="carousel-indicators camp-indicators">
+                        @foreach($camps as $index => $camp)
+                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
+                        @endforeach
+                    </div>
+                    <div class="carousel-inner camp-slide">
+                        @foreach($camps as $index => $camp)
+                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }} camp-slide-img" data-bs-interval="{{ ($index % 3 + 1) * 2000 }}">
+                                <img src="{{ asset('storage/' . $camp->image) }}" class="d-block w-100 campSlide-img" alt="Slide {{ $index + 1 }}">
+                            </div>
+                        @endforeach
+                    </div>
+                    <button class="carousel-control-prev camp-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next camp-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+                
             </div>
             <div class="col-md-6">
                 <div class="camp-donate">

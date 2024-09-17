@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Camps;
 
 class CampaignPage extends Component
 {
@@ -15,10 +16,7 @@ class CampaignPage extends Component
 
     public function __construct()
     {
-        $this->imagePaths = [];
-        for ($i = 1; $i <= 13; $i++) {
-            $this->imagePaths[] = asset("assets/img/CSR/{$i}.webp");
-        }
+       //
     }
 
     /**
@@ -26,6 +24,7 @@ class CampaignPage extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.campaign-page');
+        $camps = Camps::all();
+        return view('components.campaign-page',compact('camps'));
     }
 }

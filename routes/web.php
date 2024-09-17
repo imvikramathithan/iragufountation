@@ -10,6 +10,7 @@ use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\TransformationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\CampsController;
 
 
 //admin route
@@ -37,6 +38,8 @@ Route::resource('team_members', TeamMemberController::class)->middleware(['auth'
 Route::resource('transformations', TransformationController::class)->middleware(['auth', 'verified']);
 Route::resource('galleries', GalleryController::class)->middleware(['auth', 'verified']);
 Route::resource('testimonials', TestimonialsController::class)->middleware(['auth', 'verified']);
+Route::resource('camps', CampsController::class)->middleware(['auth', 'verified']);
+
 
 
 
