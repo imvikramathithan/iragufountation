@@ -5,29 +5,31 @@
    <div class="display text-center animate-zoom-in">Gallery</div>
    <hr>
  <!-- gallery -->
-    <div class="gallery">
-        <!-- list Items -->
-        <div class="list">
-            @for ($i = 1; $i <= 15; $i++)
-                <div class="item @if ($i === 1) active @endif">
-                    <img src="{{ asset('assets/img/gallery/' . $i . '.webp') }}" alt="Image {{ $i }}">
-                </div>
-            @endfor
-        </div>
-        <!-- button arrows -->
-        <div class="arrows">
-            <button id="gallery-prev"><</button>
-            <button id="gallery-next">></button>
-        </div>
-        <!-- thumbnail -->
-        <div class="thumbnail">
-            @for ($i = 1; $i <= 15; $i++)
-                <div class="item @if ($i === 1) active @endif">
-                    <img src="{{ asset('assets/img/gallery/' . $i . '.webp') }}" alt="Thumbnail {{ $i }}">
-                </div>
-            @endfor
-        </div>
+ <div class="gallery">
+    <!-- list Items -->
+    <div class="list">
+        @foreach ($galleries as $index => $gallery)
+            <div class="item @if ($index === 0) active @endif">
+                <img src="{{ asset('storage/' . $gallery->image) }}" alt="Image {{ $index + 1 }}">
+            </div>
+        @endforeach
     </div>
+    <!-- button arrows -->
+    <div class="arrows">
+        <button id="gallery-prev"><</button>
+        <button id="gallery-next">></button>
+    </div>
+    <!-- thumbnail -->
+    <div class="thumbnail">
+        @foreach ($galleries as $index => $gallery)
+            <div class="item @if ($index === 0) active @endif">
+                <img src="{{ asset('storage/' . $gallery->image) }}" alt="Thumbnail {{ $index + 1 }}">
+            </div>
+        @endforeach
+    </div>
+</div>
+
+
     <br><br>
 </section>
 

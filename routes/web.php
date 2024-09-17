@@ -5,7 +5,11 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SlideController;
+use App\Http\Controllers\TeamMemberController;
+use App\Http\Controllers\TransformationController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\TestimonialsController;
 
 
 //admin route
@@ -28,6 +32,11 @@ Route::get('/updatetestimonials', function () {
     return view('updatetestimonials');
 })->middleware(['auth', 'verified'])->name('update.testimonials');
 
+Route::resource('slides', SlideController::class)->middleware(['auth', 'verified']);
+Route::resource('team_members', TeamMemberController::class)->middleware(['auth', 'verified']);
+Route::resource('transformations', TransformationController::class)->middleware(['auth', 'verified']);
+Route::resource('galleries', GalleryController::class)->middleware(['auth', 'verified']);
+Route::resource('testimonials', TestimonialsController::class)->middleware(['auth', 'verified']);
 
 
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-      <x-slider/>
+      <x-slider />
       <x-services-page/>
       <x-about-us/>
       <x-mendor-message/>
@@ -9,7 +9,7 @@
       <x-our-impact />
       <x-transformation />
       <x-gallery/>
-      <x-testimonials/>
+      <x-testimonial/>
       <x-campaign-page/>
       <x-conduct-us/>
 @endsection

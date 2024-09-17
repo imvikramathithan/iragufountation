@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\Transformations;
 
 class transformation extends Component
 {
@@ -21,6 +22,7 @@ class transformation extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.transformation');
+        $transformations = Transformations::all();
+        return view('components.transformation',compact('transformations'));
     }
 }

@@ -113,9 +113,9 @@ ScrollReveal().reveal(".animate-swing", animateSwing);
 
 
 
-//loader
-var loader = document.getElementById("preloader");
+  //loader
+    var loader = document.getElementById("preloader");
 
-window.addEventListener("load", function () {
-    loader.style.display = "none";
-});
+    window.addEventListener("load", function () {
+        loader.style.display = "none";
+    });

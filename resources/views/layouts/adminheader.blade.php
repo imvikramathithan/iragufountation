@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iragu</title>
+    <title>Iragu Foundation</title>
 
     <!--=============== REMIXICONS ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css">
+
 </head>
 <body>
   <div class="adminhead">
@@ -41,11 +43,15 @@
   </div>  
       <div class="sidebar-link">
           <a class="nav-link admin-link active" aria-current="page" href="{{route('home')}}"><i class="fa-solid fa-house"></i> Home</a>
-          <a class="nav-link admin-link" href="{{route('services.student')}}"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+          <a class="nav-link admin-link" href="{{route('update.student')}}"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+          <a class="nav-link admin-link" href="{{route('slides.index')}}"><i class="fa-solid fa-table-columns"></i> Slides</a>
+          <a class="nav-link admin-link" href="{{route('team_members.index')}}"><i class="fa-solid fa-table-columns"></i> Team Members</a>
+          <a class="nav-link admin-link" href="{{route('transformations.index')}}"><i class="fa-solid fa-table-columns"></i> Transformations </a>
+          <a class="nav-link admin-link" href="{{route('galleries.index')}}"><i class="fa-regular fa-images"></i> Gallery </a>
+          <a class="nav-link admin-link" href="{{route('testimonials.index')}}" ><i class="fa-solid fa-users"></i> Testimonials</a>
           <a class="nav-link admin-link" href="{{route('update.student')}}"><i class="fa-solid fa-people-line"></i>  Service for student</a>
           <a class="nav-link admin-link" href="{{route('update.management')}}"><i class="fa-solid fa-landmark"></i> Service for Management</a>
-          <a class="nav-link admin-link" href="{{route('update.gallery')}}" ><i class="fa-regular fa-images"></i> Gallery</a>
-          <a class="nav-link admin-link" href="{{route('update.testimonials')}}" ><i class="fa-solid fa-users"></i> Testimonials</a>
+          
       </div>
 </div>
 <div class="container-admin">

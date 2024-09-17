@@ -40,10 +40,10 @@
                                         <a class="nav-link two" aria-current="page" href="{{route('home')}}">Home</a>
                                         <a class="nav-link two" href="{{route('home')}}/{{ url('#about-us') }}">About Us</a>
                                         <div class="sfsdropdown">
-                                            <a class="nav-link two" href=""> For student</a>
+                                            <p class="nav-link two" href=""> For student</p>
                                             <div class="sfslist animate__animated animate__slideInDown">
                                                <div class="handdropdown">
-                                                    <a href="" class="">Handwriting</a>
+                                                    <a href="{{route('services.student.handwriting')}}/{{url('#handwriting')}}" class="">Handwriting</a>
                                                         <div class="dropright1">
                                                             <a href="{{route('services.student.handwriting')}}/{{url('#cursiwiz')}}">Cursiwiz</a>
                                                             <a href="{{route('services.student.handwriting')}}/{{url('#uyirmei')}}">உயிர்மெய்</a>
@@ -51,13 +51,13 @@
                                                         </div>
                                                </div>
                                                 <div class="comdropdown">
-                                                         <a href="" class="">Communicative English</a>
+                                                         <a href="{{route('services.student')}}/{{url('#communicative')}}" class="">Communicative English</a>
                                                          <div class="dropright2">
                                                             <a href="{{route('services.student')}}/{{url('#focuseng')}}">FocusEng</a>
                                                          </div>
                                                 </div>
                                                 <div class="arodropdown">
-                                                    <a href="" class="">Science</a>
+                                                    <a href="{{route('services.student')}}/{{url('#science')}}" class="">Science</a>
                                                     <div class="dropright3">
                                                         <a href="{{route('services.student')}}/{{url('#wings')}}">Wings (aeronautical)</a>
                                                         <a href="{{route('services.student')}}">lit Edison (Coming soon..)</a>
@@ -66,9 +66,9 @@
                                             </div>
                                         </div>
                                         <div class="sfmdropdown">
-                                            <a class="nav-link two" href=""> For Management</a>
+                                            <p class="nav-link two" href=""> For Management</p>
                                             <div class="sfmlist animate__animated animate__slideInDown">
-                                                <a href="{{route('services.management')}}/{{url('#settingupschool')}}">Setting up Schools</a>
+                                                <a href="{{route('services.management')}}/">Setting up Schools</a>
                                                 <a href="{{route('services.management')}}/{{url('#curriculam')}}">Curriculum and Support</a>
                                                 <a href="{{route('services.management')}}/{{url('#Recruitment')}}">Recruitment</a>
                                                 <a href="{{route('services.management')}}/{{url('#training')}}">Training & Development</a>
@@ -244,7 +244,7 @@
                                 <a href="{{route('services.student.handwriting')}}/{{url('#Handwriting')}}" class="nav-link">Handwriting</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('services.student')}}/{{url('#Cummulative')}}" class="nav-link">Communicative English</a>
+                                <a href="{{route('services.student')}}/{{url('#communicative')}}" class="nav-link">Communicative English</a>
                             </li>
                             <li class="nav-item">
                             <a href="{{route('services.student')}}/{{url('#science')}}" class="nav-link">Aeromodelling</a>
@@ -257,7 +257,7 @@
                                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="{{route('services.management')}}/{{url('#settingupschool')}}" class="nav-link">Setting up Schools</a>
+                                        <a href="{{route('services.management')}}" class="nav-link">Setting up Schools</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{route('services.management')}}/{{url('#curriculam')}}" class="nav-link">Curriculum and Support</a>
