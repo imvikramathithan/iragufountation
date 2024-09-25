@@ -49,7 +49,7 @@
           <a class="nav-link admin-link" href="{{route('transformations.index')}}"><i class="fa-solid fa-table-columns"></i> Transformations </a>
           <a class="nav-link admin-link" href="{{route('galleries.index')}}"><i class="fa-regular fa-images"></i> Gallery </a>
           <a class="nav-link admin-link" href="{{route('testimonials.index')}}" ><i class="fa-solid fa-users"></i> Testimonials</a>
-          <a class="nav-link admin-link" href="{{route('update.student')}}"><i class="fa-solid fa-people-line"></i>  Service for student</a>
+          <a class="nav-link admin-link" href="{{route('services.index')}}"><i class="fa-solid fa-people-line"></i>  Service for student</a>
           <a class="nav-link admin-link" href="{{route('update.management')}}"><i class="fa-solid fa-landmark"></i> Service for Management</a>
           
       </div>

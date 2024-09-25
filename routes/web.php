@@ -11,6 +11,9 @@ use App\Http\Controllers\TransformationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\CampsController;
+use App\Http\Controllers\TestingController;
+use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\ServiceStudentController;
 
 
 //admin route
@@ -39,7 +42,9 @@ Route::resource('transformations', TransformationController::class)->middleware(
 Route::resource('galleries', GalleryController::class)->middleware(['auth', 'verified']);
 Route::resource('testimonials', TestimonialsController::class)->middleware(['auth', 'verified']);
 Route::resource('camps', CampsController::class)->middleware(['auth', 'verified']);
-
+Route::resource('testing', TestingController::class)->middleware(['auth', 'verified']);
+Route::resource('services', ServiceStudentController::class)->middleware(['auth', 'verified']);
+Route::resource('courses', CoursesController::class)->middleware(['auth', 'verified']);
 
 
 
