@@ -1,81 +1,88 @@
 <style>
     .zigzag-container {
-    display: flex;
-    align-items: center;
-    
-}
+        display: flex;
+        align-items: center;
+    }
 
-.zigzag-container.left .content-box {
-    flex-direction: row;
-}
-.zigzag-container.left .content-box .content-text p{
-    border-radius: 10px;
-    min-height: 102px;
-    padding: 14px;
-    background-image: linear-gradient(to right, rgb(0 0 0), rgb(0 0 0 / 0%));
-    color: #fff;
-}
+    .zigzag-container.left .content-box {
+        flex-direction: row;
+    }
+    .zigzag-container.left .content-box .content-text p {
+        border-radius: 10px;
+        min-height: 102px;
+        padding: 14px;
+        background-image: linear-gradient(to right, rgb(0 0 0), rgb(0 0 0 / 0%));
+        color: #fff;
+    }
 
+    .zigzag-container.right .content-box {
+        flex-direction: row-reverse;
+    }
+    .zigzag-container.right .content-box .content-text p {
+        border-radius: 10px;
+        min-height: 102px;
+        padding: 14px;
+        background-image: linear-gradient(to left, rgb(0 0 0), rgb(0 0 0 / 0%));
+        color: #fff;
+    }
 
-.zigzag-container.right .content-box {
-    flex-direction: row-reverse;
-}
-.zigzag-container.right .content-box .content-text p{
-border-radius: 10px;
-    min-height: 102px;
-    padding: 14px;
-    background-image: linear-gradient(to left, rgb(0 0 0), rgb(0 0 0 / 0%));
-    color: #fff;
-}
+    .content-box {
+        padding: 20px;
+        display: flex;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        height: 700px;
+    }
 
-.content-box {
-    padding: 20px;
-      display: flex;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    height: 700px;
-}
+    .content-box img {
+        width: 70%;
+    }
 
-.content-box img {
-    width: 70%;
-}
+    .content-text {
+        width: 60%;
+        padding: 10px;
+    }
 
-.content-text {
-    width: 60%;
-    padding: 10px;
-}
+    .content-text h2 {
+        margin: 0;
+        font-size: 24px;
+    }
 
-.content-text h2 {
-    margin: 0;
-    font-size: 24px;
-}
+    .content-text p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
 
-.content-text p {
-    font-size: 16px;
-    line-height: 1.5;
-}
+    .btn-container {
+        margin-top: 20px;
+    }
 
-.btn-container {
-    margin-top: 20px;
-}
+    .btn {
+        padding: 10px 20px;
+        background-color: #ff1500;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
 
-.btn {
-    padding: 10px 20px;
-    background-color: #ff1500;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
+    /* Custom styles for the SFS logo and button container */
+    .sfslogo img {
+        width: 100px; /* Adjust size if needed */
+        margin-right: 20px;
+    }
 
+    .s_btn {
+        margin-top: 15px;
+    }
 </style>
 
 <div class="course">
     <h1>Service for Students</h1>
-
+    <h3>{{ $course->course_name }}</h3>
 </div>
 
 <div class="course-section" id="{{ $course->slug }}">
@@ -99,16 +106,16 @@ border-radius: 10px;
                </div>
 
                 <div class="content-text">
-                    <div class="qoutes">{{$service->quotes}}</div>
+                    <div class="qoutes">{{ $service->quotes }}</div>
                     <p>
                         {{ Str::limit($service->description, 150) }}
-                        <span class="read-more animate__animated animate__fadeInUp">
+                        <span class="read-more animate__animated animate__fadeInUp" style="display:none;">
                             {{ Str::substr($service->description, 150) }}
                         </span>
                         <span class="show-more" onclick="showMore(this)">Read More</span>
                     </p>
                     <div class="s_btn">
-                        <a href="{{ url('storage/', $service->brochure) }}" class="s-btn">
+                        <a href="{{ url('storage/', $service->brochure) }}" class="btn">
                             Download Brochure <i class="fa-solid fa-download"></i>
                         </a>
                     </div>
@@ -117,6 +124,7 @@ border-radius: 10px;
         </div>
     @endforeach
 </div>
+
 <script>
     function showMore(element) {
         const parent = element.closest('p');

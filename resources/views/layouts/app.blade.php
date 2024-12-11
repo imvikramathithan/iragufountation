@@ -39,32 +39,26 @@
                                         <div class="navbar-nav ms-auto nav-color">
                                         <a class="nav-link two" aria-current="page" href="{{route('home')}}">Home</a>
                                         <a class="nav-link two" href="{{route('home')}}/{{ url('#about-us') }}">About Us</a>
-                                        <div class="sfsdropdown">
-                                            <p class="nav-link two" href=""> For student</p>
-                                            <div class="sfslist animate__animated animate__slideInDown">
-                                               <div class="handdropdown">
-                                                    <a href="{{route('services.student.handwriting')}}/{{url('#handwriting')}}" class="">Handwriting</a>
-                                                        <div class="dropright1">
-                                                            <a href="{{route('services.student.handwriting')}}/{{url('#cursiwiz')}}">Cursiwiz</a>
-                                                            <a href="{{route('services.student.handwriting')}}/{{url('#uyirmei')}}">உயிர்மெய்</a>
-                                                            <a href="{{route('services.student.handwriting')}}/{{url('#calligraphy')}}">Calligraphy</a>
-                                                        </div>
-                                               </div>
-                                                <div class="comdropdown">
-                                                         <a href="{{route('services.student')}}/{{url('#communicative')}}" class="">Communicative English</a>
-                                                         <div class="dropright2">
-                                                            <a href="{{route('services.student')}}/{{url('#focuseng')}}">FocusEng</a>
-                                                         </div>
-                                                </div>
-                                                <div class="arodropdown">
-                                                    <a href="{{route('services.student')}}/{{url('#science')}}" class="">Science</a>
-                                                    <div class="dropright3">
-                                                        <a href="{{route('services.student')}}/{{url('#wings')}}">Wings (aeronautical)</a>
-                                                        <a href="{{route('services.student')}}">lit Edison (Coming soon..)</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                      <div class="sfsdropdown">
+    <p class="nav-link two">For Students</p>
+    <div class="sfslist animate__animated animate__slideInDown">
+        @foreach($courses as $course)
+            <div class="{{ strtolower($course->slug) }}dropdown">
+                <a href="{{ route('services.student', $course->slug) }}">{{ $course->course_name }}</a>
+                @if($course->services->isNotEmpty())
+                    <div class="dropright">
+                        @foreach($course->services as $service)
+                            <a href="{{ route('services.student', $course->slug) }}#{{ $service->slug }}">
+                                {{ $service->name }}
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        @endforeach
+    </div>
+</div>
+
                                         <div class="sfmdropdown">
                                             <p class="nav-link two" href=""> For Management</p>
                                             <div class="sfmlist animate__animated animate__slideInDown">

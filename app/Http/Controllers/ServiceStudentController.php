@@ -72,8 +72,8 @@ class ServiceStudentController extends Controller
     public function update(Request $request, serviceStudent $service)
     {
         $request->validate([
-            'subject_id' => 'required|exists:courses,id',
-            'name' => 'required',
+            'subject_id' => 'nullable|exists:courses,id',
+            'name' => 'nullable',
             'slug' =>'string',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'bg_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',

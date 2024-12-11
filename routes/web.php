@@ -1,73 +1,62 @@
 <?php
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MailController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PageController;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SlideController;
-use App\Http\Controllers\TeamMemberController;
-use App\Http\Controllers\TransformationController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\TestimonialsController;
-use App\Http\Controllers\CampsController;
-use App\Http\Controllers\TestingController;
-use App\Http\Controllers\CoursesController;
-use App\Http\Controllers\ServiceStudentController;
+use App\Http\Controllers\{
+    HomeController,
+    MailController,
+    ServiceController,
+    ProfileController,
+    PageController,
+    SlideController,
+    TeamMemberController,
+    TransformationController,
+    GalleryController,
+    TestimonialsController,
+    CampsController,
+    TestingController,
+    CoursesController,
+    ServiceStudentController,
+    AdminDashboardController
+};
 
-
-//admin route
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/updateStudent', function () {
-    return view('updatestudent');
-})->middleware(['auth', 'verified'])->name('update.student');
-
-Route::get('/updategallery', function () {
-    return view('updategallery');
-})->middleware(['auth', 'verified'])->name('update.gallery');
-
-Route::get('/updatemanagement', function () {
-    return view('updatemanagement');
-})->middleware(['auth', 'verified'])->name('update.management');
-Route::get('/updatetestimonials', function () {
-    return view('updatetestimonials');
-})->middleware(['auth', 'verified'])->name('update.testimonials');
-
-Route::resource('slides', SlideController::class)->middleware(['auth', 'verified']);
-Route::resource('team_members', TeamMemberController::class)->middleware(['auth', 'verified']);
-Route::resource('transformations', TransformationController::class)->middleware(['auth', 'verified']);
-Route::resource('galleries', GalleryController::class)->middleware(['auth', 'verified']);
-Route::resource('testimonials', TestimonialsController::class)->middleware(['auth', 'verified']);
-Route::resource('camps', CampsController::class)->middleware(['auth', 'verified']);
-Route::resource('testing', TestingController::class)->middleware(['auth', 'verified']);
-Route::resource('services', ServiceStudentController::class)->middleware(['auth', 'verified']);
-Route::resource('courses', CoursesController::class)->middleware(['auth', 'verified']);
-
-
-
-Route::middleware('auth')->group(function () {
+// Admin Routes
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
+    Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/updateStudent', fn() => view('updatestudent'))->name('update.student');
+    Route::get('/updategallery', fn() => view('updategallery'))->name('update.gallery');
+    Route::get('/updatemanagement', fn() => view('updatemanagement'))->name('update.management');
+    Route::get('/updatetestimonials', fn() => view('updatetestimonials'))->name('update.testimonials');
+    
+    // Resource Controllers
+    Route::resources([
+        'slides'         => SlideController::class,
+        'team_members'   => TeamMemberController::class,
+        'transformations'=> TransformationController::class,
+        'galleries'      => GalleryController::class,
+        'testimonials'   => TestimonialsController::class,
+        'camps'          => CampsController::class,
+        'testing'        => TestingController::class,
+        'services'       => ServiceStudentController::class,
+        'courses'        => CoursesController::class,
+    ]);
+    
+    // Profile Management
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+// Public Routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/sfm', [ServiceController::class, 'serviceformanagement'])->name('services.management');
+Route::get('/sfs', [ServiceController::class, 'serviceforstudent'])->name('services.student');
+Route::get('/sfsw', [ServiceController::class, 'wingsPage'])->name('services.student.wing');
+Route::get('/sfsh', [ServiceController::class, 'handwritingPage'])->name('services.student.handwriting');
 
-
-// pageroute
-Route::get('/',[HomeController::class, 'index'])->name('home');
-Route::get('/sfm',[ServiceController::class,'serviceformanagement'])->name(('services.management'));
-Route::get('/sfs',[ServiceController::class,'serviceforstudent'])->name(('services.student'));
-Route::get('/sfsh',[ServiceController::class,'handwritingPage'])->name(('services.student.handwriting'));
-
-
-
-
-//mail
-
+// Mail Routes
 Route::post('/send-contact-mail', [MailController::class, 'sendContactMail'])->name('send.contact_mail');
 Route::post('/send-management-mail', [MailController::class, 'sendManagementMail'])->name('send.management_mail');
 Route::post('/send-donation-mail', [MailController::class, 'sendDonationMail'])->name('send.donation_mail');
+
+require __DIR__.'/auth.php';

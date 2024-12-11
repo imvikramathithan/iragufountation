@@ -15,4 +15,7 @@ class ServiceController extends Controller
     public function handwritingPage(){
     return view('handwritingPage');
   }
+      public function wingsPage(){
+    return view('wings-page');
+  }
 }

@@ -329,24 +329,7 @@ window.onscroll = () => {
 
 /**************READ MORE**********/
 
-function showMore(btn) {
-    var paragraph = btn.parentNode;
-    var moreText = paragraph.querySelector(".read-more");
-    var btnText = paragraph.querySelector(".show-more");
 
-    if (
-        paragraph.style.maxHeight === "100%" ||
-        paragraph.style.maxHeight === ""
-    ) {
-        paragraph.style.maxHeight = "none";
-        moreText.style.display = "inline";
-        btnText.innerHTML = "Read Less";
-    } else {
-        paragraph.style.maxHeight = "100%";
-        moreText.style.display = "none";
-        btnText.innerHTML = "Read More";
-    }
-}
 
 //csr
 

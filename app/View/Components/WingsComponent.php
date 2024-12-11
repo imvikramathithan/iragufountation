@@ -7,21 +7,25 @@ use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\Courses;
 use App\Models\serviceStudent;
-
-class SfsCommulative extends Component
+class WingsComponent extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+   public function __construct()
     {
-        //
+        // Fetch the "Wings" course by slug
+        
     }
 
- public function render(): View|Closure|string
+
+    /**
+     * Get the view / contents that represent the component.
+     */
+    public function render(): View|Closure|string
     {
-        // First, find the course with the 'handwriting' slug
-        $course = Courses::where('slug', 'communicative-english')->first();
+                // First, find the course with the 'handwriting' slug
+        $course = Courses::where('slug', 'science')->first();
 
         if (!$course) {
             abort(404, 'Course not found');
@@ -29,8 +33,6 @@ class SfsCommulative extends Component
         
         // Fetch the related serviceStudent records for the course
         $services = serviceStudent::where('subject_id', $course->id)->with('course')->get(); // Load related course
-        
-        return view('components.sfs-commulative', compact('services','course'));
+        return view('components.wings-component', compact('services','course'));
     }
-
 }
