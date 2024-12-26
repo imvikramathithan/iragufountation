@@ -39,27 +39,26 @@
                                         <div class="navbar-nav ms-auto nav-color">
                                         <a class="nav-link two" aria-current="page" href="{{route('home')}}">Home</a>
                                         <a class="nav-link two" href="{{route('home')}}/{{ url('#about-us') }}">About Us</a>
-                                      <div class="sfsdropdown">
-    <p class="nav-link two">For Students</p>
-    <div class="sfslist animate__animated animate__slideInDown">
-        @foreach($courses as $course)
-            <div class="{{ strtolower($course->slug) }}dropdown">
-                <a href="{{ route('services.student', $course->slug) }}">{{ $course->course_name }}</a>
-                @if($course->services->isNotEmpty())
-                    <div class="dropright">
-                        @foreach($course->services as $service)
-                            <a href="{{ route('services.student', $course->slug) }}#{{ $service->slug }}">
-                                {{ $service->name }}
-                            </a>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
-        @endforeach
-    </div>
-</div>
-
-                                        <div class="sfmdropdown">
+                                    <div class="sfsdropdown">
+                                        <p class="nav-link two">For Students</p>
+                                        <div class="sfslist animate__animated animate__slideInDown">
+                                            @foreach($courses as $course)
+                                                <div class="{{ strtolower($course->slug) }}dropdown">
+                                                    <a href="{{ route('services.student', $course->slug) }}">{{ $course->course_name }}</a>
+                                                    @if($course->services->isNotEmpty())
+                                                        <div class="dropright">
+                                                            @foreach($course->services as $service)
+                                                                <a href="{{ route('services.student', $course->slug) }}#{{ $service->slug }}">
+                                                                    {{ $service->name }}
+                                                                </a>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                     <div class="sfmdropdown">
                                             <p class="nav-link two" href=""> For Management</p>
                                             <div class="sfmlist animate__animated animate__slideInDown">
                                                 <a href="{{route('services.management')}}/">Setting up Schools</a>

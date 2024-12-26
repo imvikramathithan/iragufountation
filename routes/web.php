@@ -16,30 +16,31 @@ use App\Http\Controllers\{
     TestingController,
     CoursesController,
     ServiceStudentController,
+    ServiceManagementController,
     AdminDashboardController
 };
 
 // Admin Routes
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
     Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/updateStudent', fn() => view('updatestudent'))->name('update.student');
     Route::get('/updategallery', fn() => view('updategallery'))->name('update.gallery');
     Route::get('/updatemanagement', fn() => view('updatemanagement'))->name('update.management');
     Route::get('/updatetestimonials', fn() => view('updatetestimonials'))->name('update.testimonials');
     
-    // Resource Controllers
-    Route::resources([
-        'slides'         => SlideController::class,
-        'team_members'   => TeamMemberController::class,
-        'transformations'=> TransformationController::class,
-        'galleries'      => GalleryController::class,
-        'testimonials'   => TestimonialsController::class,
-        'camps'          => CampsController::class,
-        'testing'        => TestingController::class,
-        'services'       => ServiceStudentController::class,
-        'courses'        => CoursesController::class,
-    ]);
+   Route::resources([
+    'slides'         => SlideController::class,
+    'team_members'   => TeamMemberController::class,
+    'transformations'=> TransformationController::class,
+    'galleries'      => GalleryController::class,
+    'testimonials'   => TestimonialsController::class,
+    'camps'          => CampsController::class,
+    'testing'        => TestingController::class,
+    'serviceStudents' => ServiceStudentController::class,
+    'serviceManagement' => ServiceManagementController::class,  // Fixed line
+    'courses'        => CoursesController::class,
+]);
+
     
     // Profile Management
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -49,10 +50,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/sfm', [ServiceController::class, 'serviceformanagement'])->name('services.management');
-Route::get('/sfs', [ServiceController::class, 'serviceforstudent'])->name('services.student');
-Route::get('/sfsw', [ServiceController::class, 'wingsPage'])->name('services.student.wing');
-Route::get('/sfsh', [ServiceController::class, 'handwritingPage'])->name('services.student.handwriting');
+
+// Service Routes
+Route::prefix('services')->group(function () {
+    // For Management
+    Route::get('/management', [ServiceController::class, 'serviceformanagement'])->name('services.management');
+    
+    // For Students
+    Route::prefix('student')->group(function () {
+        Route::get('/', [ServiceController::class, 'serviceforstudent'])->name('services.student');
+        Route::get('/handwriting', [ServiceController::class, 'handwritingPage'])->name('services.student.handwriting');
+        Route::get('/wings', [ServiceController::class, 'wingsPage'])->name('services.student.wings');
+        Route::get('/{slug}', [ServiceController::class, 'showStudentService'])->name('services.student.show');
+    });
+});
 
 // Mail Routes
 Route::post('/send-contact-mail', [MailController::class, 'sendContactMail'])->name('send.contact_mail');

@@ -10,8 +10,8 @@
         </ul>
     </div>
 @endif
-     <h1 class="mt-4">Create Service</h1>
-     <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
+     <h1 class="mt-4">Create Service Student</h1>
+     <form action="{{ route('serviceStudents.store') }}" method="POST" enctype="multipart/form-data">
          @csrf
          <div class="form-group mb-3">
              <label for="subject_id">Select Course</label>
@@ -50,7 +50,7 @@
              <input type="file" name="brochure" class="form-control" accept=".pdf">
          </div>
          <button type="submit" class="btn btn-success">Create</button>
-         <a href="{{ route('services.index') }}" class="btn btn-secondary">Back</a>
+         <a href="{{ route('serviceStudents.index') }}" class="btn btn-secondary">Back</a>
      </form>
  </div>
  <script>

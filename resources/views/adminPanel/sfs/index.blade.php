@@ -1,9 +1,10 @@
 @extends('layouts.adminheader')
+
 @section('content')
 <div class="container">
-    <h1 class="mt-4">Services</h1>
-    <a href="{{ route('services.create') }}" class="btn btn-primary mb-3">Add New Service</a>
-       <a href="{{ route('courses.create') }}" class="btn btn-primary">Add Courses</a>
+    <h1 class="mt-4">Service Students</h1>
+    <a href="{{ route('serviceStudents.create') }}" class="btn btn-primary mb-3">Add New Service Student</a>
+    <a href="{{ route('courses.create') }}" class="btn btn-primary">Add Courses</a>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -17,37 +18,39 @@
                 <th>ID</th>
                 <th>Course</th>
                 <th>Subject</th>
-                 <th>Slug</th>
+                <th>Slug</th>
                 <th>Logo</th>
                 <th>Quotes</th>
-                <th>pdf</th>
+                <th>PDF</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($services as $service)
+            @foreach ($serviceStudents as $serviceStudent)
             <tr>
-                <td>{{ $service->id }}</td>
-                <td>{{ $service->course->course_name }}</td>
-                 <td>{{ $service->name }}</td>
-                 <td>{{ $service->slug }}</td>
+                <td>{{ $serviceStudent->id }}</td>
+                <td>{{ $serviceStudent->course->course_name }}</td>
+                <td>{{ $serviceStudent->name }}</td>
+                <td>{{ $serviceStudent->slug }}</td>
                 <td>
-                        @if($service->logo)
-                            <img src="{{ asset('storage/' . $service->logo) }}" alt="{{ $service->course_name }}" width="100">
-                        @endif
-                    </td>
-                <td>{{ $service->quotes }}</td>
-                 <td>@if($service->brochure)
-                            <a href="{{ asset('storage/' . $service->brochure) }}" >{{ $service->name }}</a>
-                        @endif</td>
+                    @if($serviceStudent->logo)
+                        <img src="{{ asset('storage/' . $serviceStudent->logo) }}" alt="{{ $serviceStudent->course_name }}" width="100">
+                    @endif
+                </td>
+                <td>{{ $serviceStudent->quotes }}</td>
                 <td>
-                    <a href="{{ route('services.edit', $service->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('services.destroy', $service->id) }}" method="POST" style="display:inline;">
+                    @if($serviceStudent->brochure)
+                        <a href="{{ asset('storage/' . $serviceStudent->brochure) }}" target="_blank">{{ $serviceStudent->name }}</a>
+                    @endif
+                </td>
+                <td>
+                    <a href="{{ route('serviceStudents.edit', $serviceStudent->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('serviceStudents.destroy', $serviceStudent->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
-                    <a href="{{ route('services.show', $service->id) }}" class="btn btn-info btn-sm">View</a>
+                    <a href="{{ route('serviceStudents.show', $serviceStudent->id) }}" class="btn btn-info btn-sm">View</a>
                 </td>
             </tr>
             @endforeach

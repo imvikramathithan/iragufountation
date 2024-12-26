@@ -167,8 +167,8 @@ body {
             <a class="nav-link admin-link" href="{{route('transformations.index')}}"><i class="fa-solid fa-magic"></i> Transformations</a>
             <a class="nav-link admin-link" href="{{route('galleries.index')}}"><i class="fa-regular fa-images"></i> Gallery</a>
             <a class="nav-link admin-link" href="{{route('testimonials.index')}}"><i class="fa-solid fa-comments"></i> Testimonials</a>
-            <a class="nav-link admin-link" href="{{route('services.index')}}"><i class="fa-solid fa-people-line"></i> Services for Students</a>
-            <a class="nav-link admin-link" href="{{route('update.management')}}"><i class="fa-solid fa-landmark"></i> Services for Management</a>
+            <a class="nav-link admin-link" href="{{route('serviceStudents.index')}}"><i class="fa-solid fa-people-line"></i> Services for Students</a>
+            <a class="nav-link admin-link" href="{{route('serviceManagement.index')}}"><i class="fa-solid fa-landmark"></i> Services for Management</a>
         </div>
     </div>
 

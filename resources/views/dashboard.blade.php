@@ -58,7 +58,8 @@
             <ul class="list-group">
                 @foreach ($recentTeamMembers as $member)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span><strong>{{ $member->name }}</strong> - {{ $member->role }}</span>
+                        <img src="{{ asset('storage/' . $member->image) }}" alt="{{ $member->name }}" width="50">
+                        <span><strong>{{ $member->name }} <br> </strong>  {{ $member->role }}</span>
                         <small class="text-muted">Added on {{ $member->created_at->format('d M Y') }}</small>
                     </li>
                 @endforeach
@@ -70,6 +71,7 @@
             <ul class="list-group">
                 @foreach ($recentSlides as $slide)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <img src="{{ asset('storage/' . $slide->image) }}" alt="{{ $slide->midLine }}" width="100">
                         <span><strong>Slide #{{ $slide->id }}</strong></span>
                         <small class="text-muted">Added on {{ $slide->created_at->format('d M Y') }}</small>
                     </li>
@@ -84,6 +86,7 @@
             <ul class="list-group">
                 @foreach ($recentGallery as $image)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <img src="{{ asset('storage/' . $image->image) }}" alt="{{ $image->caption }}" width="100">
                         <span><strong>Image Caption:</strong> {{ $image->caption ?? 'N/A' }}</span>
                         <small class="text-muted">Added on {{ $image->created_at->format('d M Y') }}</small>
                     </li>
@@ -96,6 +99,7 @@
             <ul class="list-group">
                 @foreach ($recentTestimonials as $testimonial)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <img src="{{ asset('storage/' . $testimonial->image) }}" alt="{{ $testimonial->school_name }}" width="100">
                         <span><strong>{{ $testimonial->school_name }}</strong> - {{ Str::limit($testimonial->content, 50) }}</span>
                         <small class="text-muted">Added on {{ $testimonial->created_at->format('d M Y') }}</small>
                     </li>
