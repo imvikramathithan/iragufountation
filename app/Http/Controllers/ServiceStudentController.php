@@ -10,8 +10,8 @@ class ServiceStudentController extends Controller
 {
     public function index()
     {
-        $services = serviceStudent::with('course')->get(); // Load related course
-        return view('adminPanel.sfs.index', compact('services'));
+        $serviceStudents = serviceStudent::with('course')->get(); // Load related course
+        return view('adminPanel.sfs.index', compact('serviceStudents'));
     }
 
     // Show the form for creating a new service
@@ -52,24 +52,24 @@ class ServiceStudentController extends Controller
 
         serviceStudent::create($data);
 
-        return redirect()->route('services.index')->with('success', 'Service created successfully.');
+        return redirect()->route('serviceStudents.index')->with('success', 'Service created successfully.');
     }
 
     // Display the specified service
-    public function show(serviceStudent $service)
+    public function show(serviceStudent $serviceStudent)
     {
         $courses = Courses::all(); 
-        return view('adminPanel.sfs.show', compact('service', 'courses'));
+        return view('adminPanel.sfs.show', compact('serviceStudent', 'courses'));
     }
 
     // Show the form for editing the specified service
-    public function edit(serviceStudent $service)
+    public function edit(serviceStudent $serviceStudent)
     {
         $courses = Courses::all();
-        return view('adminPanel.sfs.edit', compact('service', 'courses'));
+        return view('adminPanel.sfs.edit', compact('serviceStudent', 'courses'));
     }
 
-    public function update(Request $request, serviceStudent $service)
+    public function update(Request $request, serviceStudent $serviceStudent)
     {
         $request->validate([
             'subject_id' => 'nullable|exists:courses,id',
@@ -86,36 +86,36 @@ class ServiceStudentController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('logo')) {
-            if ($service->logo) {
-                \Storage::disk('public')->delete($service->logo);
+            if ($serviceStudent->logo) {
+                \Storage::disk('public')->delete($serviceStudent->logo);
             }
             $data['logo'] = $request->file('logo')->store('logos', 'public');
         }
 
         if ($request->hasFile('bg_image')) {
-            if ($service->bg_image) {
-                \Storage::disk('public')->delete($service->bg_image);
+            if ($serviceStudent->bg_image) {
+                \Storage::disk('public')->delete($serviceStudent->bg_image);
             }
             $data['bg_image'] = $request->file('bg_image')->store('bg_images', 'public');
         }
 
         if ($request->hasFile('brochure')) {
-            if ($service->brochure) {
-                \Storage::disk('public')->delete($service->brochure);
+            if ($serviceStudent->brochure) {
+                \Storage::disk('public')->delete($serviceStudent->brochure);
             }
             $data['brochure'] = $request->file('brochure')->store('brochures', 'public');
         }
 
-        $service->update($data);
+        $serviceStudent->update($data);
 
-        return redirect()->route('services.index')->with('success', 'Service updated successfully.');
+        return redirect()->route('serviceStudents.index')->with('success', 'Service updated successfully.');
     }
 
     // Remove the specified service from the database
-    public function destroy(serviceStudent $service)
+    public function destroy(serviceStudent $serviceStudent)
     {
-        $service->delete();
+        $serviceStudent->delete();
 
-        return redirect()->route('services.index')->with('success', 'Service deleted successfully.');
+        return redirect()->route('serviceStudents.index')->with('success', 'Service deleted successfully.');
     }
 }

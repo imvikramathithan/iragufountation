@@ -4,7 +4,10 @@
     align-items: center;
     
 }
-
+.course{
+    text-align: center;
+    padding: 1rem;
+}
 .zigzag-container.left .content-box {
     flex-direction: row;
 }
@@ -73,7 +76,7 @@ border-radius: 10px;
 
 </style>
 
-<div class="course">
+<div class="course" >
     <h1>Service for Students</h1>
     <h3>{{ $course->course_name }}</h3>
 </div>
