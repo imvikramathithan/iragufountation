@@ -7,6 +7,8 @@ use App\Models\TeamMember;
 use App\Models\Slide;
 use App\Models\Transformations;
 use App\Models\Galleries;
+use App\Models\Contact;
+use App\Models\ManagementQuery;
 use App\Models\Testimonials;
 use App\Models\ServiceStudent;
 
@@ -17,6 +19,8 @@ class AdminDashboardController extends Controller
         // Count data for insights
         $teamMembersCount = TeamMember::count();
         $slidesCount = Slide::count();
+        $studentQueries = Contact::count();
+        $managementQueries = ManagementQuery::count();
         $galleryCount = Galleries::count();
         $testimonialsCount = Testimonials::count();
         $servicesForStudentsCount = ServiceStudent::count();
@@ -37,7 +41,9 @@ class AdminDashboardController extends Controller
             'recentTeamMembers',
             'recentSlides',
             'recentGallery',
-            'recentTestimonials'
+            'recentTestimonials',
+            'studentQueries',
+            'managementQueries'
         ));
     }
 }

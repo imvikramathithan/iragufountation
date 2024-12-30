@@ -19,7 +19,22 @@
                 </div>
             </div>
         </div>
-
+        <div class="col-lg-3 col-md-6">
+            <div class="card text-center shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Student Queries</h5>
+                    <p class="card-text display-4">{{ $studentQueries }}</p>
+                </div>
+            </div>
+        </div>
+                <div class="col-lg-3 col-md-6">
+            <div class="card text-center shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Management Queries</h5>
+                    <p class="card-text display-4">{{ $managementQueries }}</p>
+                </div>
+            </div>
+        </div>
         <!-- Total Slides -->
         <div class="col-lg-3 col-md-6">
             <div class="card text-center shadow-sm h-100">

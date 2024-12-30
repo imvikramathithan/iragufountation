@@ -76,10 +76,10 @@ class ServiceStudentController extends Controller
             'name' => 'nullable',
             'slug' =>'string',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'bg_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'bg_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:20048',
             'quotes' => 'nullable|string',
             'description' => 'nullable|string',
-            'brochure' => 'nullable|mimes:pdf|max:2048',
+            'brochure' => 'nullable|mimes:pdf|max:20048',
         ]);
 
         // Handle file uploads

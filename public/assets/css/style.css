@@ -2451,7 +2451,7 @@ a.cont {
     }
 
     .main {
-        padding-top: 12% !important;
+        padding-top: 10% !important;
     }
 
     .s-mb {
@@ -2604,6 +2604,7 @@ a.cont {
 
     /*service*/
     .content-box {
+        padding-top: 103px;
         height: auto !important;
         flex-direction: column !important;
     }
@@ -3114,6 +3115,18 @@ a.cont {
         font-size: 1rem !important;
         line-height: 1;
     }
+        .course {
+            position: absolute;
+            left: 27% !important;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 30px;
+            
+        }
+        .course h3{
+            font-size: 12px !important
+        }
 }
 
 /* For large devices */

@@ -7,6 +7,8 @@
 
     <!--=============== MDBootstrap CDN ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 
     <!--=============== REMIXICONS ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
@@ -14,7 +16,7 @@
 
     <style>
         :root {
-            --primary-color: #ff0000;
+            --danger-color: #ff0000;
             --secondary-color: rgb(110, 110, 110);
         }
 * {
@@ -36,6 +38,7 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom:2rem ;
         }
 
         .sidebar {
@@ -47,7 +50,7 @@ body {
             background-color: var(--secondary-color);
             color: white;
             overflow-y: auto;
-            padding-top: 20px;
+            padding-top: 60px;
             transition: transform 0.3s ease-in-out;
             transform: translateX(-100%);
             z-index: 1000;
@@ -66,7 +69,7 @@ body {
         }
 
         .sidebar a:hover {
-            background-color: var(--primary-color);
+            background-color: var(--danger-color);
             color: white;
         }
 
@@ -78,6 +81,7 @@ body {
             cursor: pointer;
         }
 
+
         .menu-toggle-close {
             display: flex;
             justify-content: flex-end;
@@ -86,10 +90,13 @@ body {
 
         .container-admin {
             
-            padding: 20px;
+            padding: 60px;
             transition: margin-left 0.3s ease-in-out;
+            
         }
-
+        .proflie{
+            border-radius: 200px;
+        }
         .container-admin.expanded {
             margin-left: 260px;
         }
@@ -101,6 +108,13 @@ body {
 
         .nav-link i {
             margin-right: 10px;
+        }
+        .bg{
+             background-color: #ff0000 !important;
+             color: #fff;
+        }
+        .text-prm{
+             color: #ff0000 !important;
         }
 
         /* Responsive Styles */
@@ -125,50 +139,84 @@ body {
 </head>
 <body>
     <!-- Header -->
-    <div class="adminhead">
-        <button class="menu-toggle" id="menuToggle">
-            <i class="ri-menu-line"></i> <!-- Menu icon -->
-        </button>
+    <div class="adminhead fixed-top" style="">
+      <button class="menu-toggle" id="menuToggle">
+    <i class="ri-menu-line"></i> <!-- Menu icon -->
+</button>
+
         <h1 class="mb-0">Iragu Foundation Admin</h1>
-        <div class="logout">
-            <div class="dropdown">
-                <button type="button" class="prof btn btn-floating shadow-0" id="profileDropdown" data-mdb-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('assets/img/avatar-1.png')}}" alt="" class="proflie">
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                    <li><a class="dropdown-item" href="#">My Profile</a></li>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a class="dropdown-item btn-danger" href="{{ route('logout') }}" 
-                               onclick="event.preventDefault(); this.closest('form').submit();">{{ __('Log Out') }}</a>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+     <div class="logout">
+    @if(auth()->check())
+        <div class="dropdown">
+            <button type="button" class="prof btn btn-floating shadow-0" id="profileDropdown" data-mdb-toggle="dropdown" aria-expanded="false">
+                <img src="{{ asset('storage/' . auth()->user()->image) }}" width="50" height="50" alt="Profile Image" class="prof btn btn-floating shadow-0">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="{{ route('profile.show') }}">My Profile</a></li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="dropdown-item btn-danger" href="{{ route('logout') }}" 
+                           onclick="event.preventDefault(); this.closest('form').submit();">{{ __('Log Out') }}</a>
+                    </form>
+                </li>
+            </ul>
         </div>
+    @else
+        <a href="{{ route('login') }}" class="btn bg">Log In</a>
+    @endif
+</div>
+
     </div>
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <div class="menu-toggle-close">
-            <button class="menu-toggle" id="menuClose">
-                <i class="ri-close-line"></i> <!-- Close icon -->
-            </button>
-        </div>
+       
         <div class="admin_logo text-center">
             <a href="#"><img src="{{asset('assets/img/logo.jpg')}}" alt="Iragu Foundation Logo" class="img-fluid logo-admin" ></a>
         </div>
         <div class="sidebar-link">
-            <a class="nav-link admin-link active" aria-current="page" href="{{route('home')}}"><i class="fa-solid fa-house"></i> Home</a>
-            <a class="nav-link admin-link" href="{{route('admin.dashboard')}}"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
-            <a class="nav-link admin-link" href="{{route('slides.index')}}"><i class="fa-solid fa-film"></i> Slides</a>
-            <a class="nav-link admin-link" href="{{route('team_members.index')}}"><i class="fa-solid fa-users"></i> Team Members</a>
-            <a class="nav-link admin-link" href="{{route('transformations.index')}}"><i class="fa-solid fa-magic"></i> Transformations</a>
-            <a class="nav-link admin-link" href="{{route('galleries.index')}}"><i class="fa-regular fa-images"></i> Gallery</a>
-            <a class="nav-link admin-link" href="{{route('testimonials.index')}}"><i class="fa-solid fa-comments"></i> Testimonials</a>
-            <a class="nav-link admin-link" href="{{route('serviceStudents.index')}}"><i class="fa-solid fa-people-line"></i> Services for Students</a>
-            <a class="nav-link admin-link" href="{{route('serviceManagement.index')}}"><i class="fa-solid fa-landmark"></i> Services for Management</a>
+            <a class="nav-link admin-link active" aria-current="page" href="{{route('home')}}">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a class="nav-link admin-link" href="{{route('admin.dashboard')}}">
+                <i class="fa-solid fa-table-columns"></i> Dashboard
+            </a>
+            <a class="nav-link admin-link" href="{{ route('users') }}">
+                <i class="fa-solid fa-users"></i> Users
+            </a>
+            <a class="nav-link admin-link" href="{{ route('management.queries') }}">
+                <i class="fa-solid fa-question-circle"></i> Management Queries
+            </a>
+            <a class="nav-link admin-link" href="{{ route('student.queries') }}">
+                <i class="fa-solid fa-user-graduate"></i> Student Queries
+            </a>
+
+            <a class="nav-link admin-link" href="{{route('slides.index')}}">
+                <i class="fa-solid fa-sliders"></i> Slides
+            </a>
+            <a class="nav-link admin-link" href="{{route('team_members.index')}}">
+                <i class="fa-solid fa-users"></i> Team Members
+            </a>
+            <a class="nav-link admin-link" href="{{route('transformations.index')}}">
+                <i class="fa-solid fa-magic"></i> Transformations
+            </a>
+            <a class="nav-link admin-link" href="{{route('galleries.index')}}">
+                <i class="fa-regular fa-images"></i> Gallery
+            </a>
+            <a class="nav-link admin-link" href="{{route('testimonials.index')}}">
+                <i class="fa-solid fa-comments"></i> Testimonials
+            </a>
+            <a class="nav-link admin-link" href="{{route('camps.index')}}">
+                <i class="fa-solid fa-campground"></i> Camps Slide
+            </a>
+            <a class="nav-link admin-link" href="{{route('serviceStudents.index')}}">
+                <i class="fa-solid fa-user-graduate"></i> Services for Students
+            </a>
+            <a class="nav-link admin-link" href="{{route('serviceManagement.index')}}">
+                <i class="fa-solid fa-landmark"></i> Services for Management
+            </a>
+
         </div>
     </div>
 
@@ -179,23 +227,24 @@ body {
 
     <!--=============== JS Dependencies ===============-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const menuClose = document.getElementById('menuClose');
-        const sidebar = document.getElementById('sidebar');
-        const adminContent = document.getElementById('adminContent');
+   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const adminContent = document.getElementById('adminContent');
 
-        // Open sidebar
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.add('show');
-            adminContent.classList.add('expanded');
-        });
+    menuToggle.addEventListener('click', () => {
+        const isExpanded = sidebar.classList.toggle('show');
+        adminContent.classList.toggle('expanded', isExpanded);
 
-        // Close sidebar
-        menuClose.addEventListener('click', () => {
-            sidebar.classList.remove('show');
-            adminContent.classList.remove('expanded');
-        });
-    </script>
+        // Toggle the icon
+        menuToggle.innerHTML = isExpanded
+            ? '<i class="ri-close-line"></i>' // Close icon
+            : '<i class="ri-menu-line"></i>'; // Menu icon
+    });
+});
+
+</script>
+
 </body>
 </html>

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Courses;
+use App\Models\ServiceManagement;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -20,10 +21,12 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    
-    {
-        //
-         View::share('courses', Courses::with('services')->get());
-    }
+public function boot(): void
+{
+    // Share both courses and management services with all views
+    View::share([
+        'courses' => Courses::with('services')->get(),
+        'managementServices' => ServiceManagement::all(),
+    ]);
+}
 }

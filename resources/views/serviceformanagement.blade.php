@@ -7,10 +7,15 @@
         align-items: center;
         justify-content: center;
     }
-    .course {
-        text-align: center;
-        padding: 1rem;
-    }
+.course {
+    position: absolute;
+    left: 40%;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 30px;
+    z-index: 1;
+}
     .zigzag-container.left .content-box {
         flex-direction: row;
     }
@@ -70,44 +75,46 @@
     }
 </style>
 
-<div class="course">
-    <h1>Service for Management</h1>
-</div>
-
-<div class="course-section" id="curriculum">
+ <!-- General course content -->
+        <div class="course">
+            <h1 class="display">Service for Management</h1>
+        </div>
+<div class="course-section " style="overflow: hidden;">
     @foreach($serviceManagement  as $index => $service)
-        <div class="zigzag-container {{ $loop->even ? 'left' : 'right' }}">
+        <div class="zigzag-container {{ $loop->even ? 'left animate-slide-left' : 'right animate-slide-right' }} ">
             <div id="{{ $service->slug }}" class="content-box" 
                 style="
                     background-image: linear-gradient(
                         to {{ $loop->even ? 'left' : 'right' }},
-                        rgba(0, 0, 0, 0.9),
-                        rgba(255, 255, 255, 0.77)
+                        rgb(0 0 0),
+                        rgb(0 0 0 /0%)
                     ), 
                     url('{{ asset('storage/' . $service->bg_image) }}');
                 ">
+               <div class="sfmlogo" style="padding: 30px">
+                    <p class="s-display" >{{ $service->title}}</p>
+               </div>
+
                 <div class="content-text">
-                    <h2>{{ $service->title }}</h2>
-                    <p class="quotes">"{{ $service->quotes }}"</p>
-                    <p>
+                    <div class="qoutes">{{$service->quotes}}</div>
+                    <p  style="text-align: justify;">
                         {{ Str::limit($service->description, 150) }}
-                        <span class="read-more animate__animated animate__fadeInUp" style="display: none;">
+                        <span class="read-more animate__animated animate__fadeInUp">
                             {{ Str::substr($service->description, 150) }}
                         </span>
                         <span class="show-more" onclick="showMore(this)">Read More</span>
                     </p>
-                    @if($service->brochure)
-                        <div class="s_btn">
-                            <a href="{{ asset('storage/' . $service->brochure) }}" class="s-btn">
-                                Download Brochure <i class="fa-solid fa-download"></i>
-                            </a>
-                        </div>
-                    @endif
+                    <div class="s_btn">
+                        <a href="{{ url('storage/', $service->brochure) }}" class="s-btn">
+                            Download Brochure <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     @endforeach
 </div>
+
 
 <script>
     function showMore(element) {

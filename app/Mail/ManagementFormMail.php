@@ -16,13 +16,6 @@ class ManagementFormMail extends Mailable
     {
         $this->management_data = $management_data;
     }
-    public function submit(Request $request)
-    {
-        $management_data = $request->all();
-        Mail::to('vikramathithan2002@gmail.com')->send(new ManagementFormMail($management_data));
-
-        return back()->with('success', 'Thank you for your query!');
-    }
     public function build()
     {
         return $this->subject('Management Query')

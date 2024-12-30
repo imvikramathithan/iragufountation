@@ -16,7 +16,7 @@
         @method('PUT')
         <div class="form-group mb-3">
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" class="form-control" value="{{ $serviceManagement->title }}" required>
+            <input type="text" id="title" name="title" class="form-control" value="{{ $serviceManagement->title }}" oninput="generateSlug()" required>
         </div>
         <div class="form-group mb-3">
             <label for="slug">Slug</label>
@@ -48,4 +48,21 @@
         <button type="submit" class="btn btn-success">Update</button>
         <a href="{{ route('serviceManagement.index') }}" class="btn btn-secondary">Back</a>
     </form>
+    <script>
+    function generateSlug() {
+        const nameInput = document.getElementById('title');
+        const slugInput = document.getElementById('slug');
+        const nameValue = nameInput.value;
+
+        // Generate the slug
+        const slug = nameValue
+            .toLowerCase()
+            .replace(/[^a-z0-9 -]/g, '') // Remove special characters
+            .trim()
+            .replace(/ -+/g, '-') // Replace multiple spaces with a single hyphen
+            .replace(/ /g, '-'); // Replace spaces with hyphens
+
+        slugInput.value = slug;
+    }
+</script>
 @endsection

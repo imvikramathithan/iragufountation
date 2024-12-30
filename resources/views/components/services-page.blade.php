@@ -7,9 +7,9 @@
                             <div class="service-head">
                                 <img src="{{asset('assets/img/arflogo.webp')}}" class="image-fluid service-image" alt="">
                                 <ul class="service-list">
-                                    <li><a href="{{route('services.student.handwriting')}}/{{url('#cursiwiz')}}">Cursiwiz</a></li>
-                                    <li><a href="{{route('services.student.handwriting')}}/{{url('#uyirmei')}}">உயிர்மெய்</a></li>
-                                    <li><a href="{{route('services.student.handwriting')}}/{{url('#calligraphy')}}">Calligraphy</a></li>
+                                    <li><a href="">Cursiwiz</a></li>
+                                    <li><a href="">உயிர்மெய்</a></li>
+                                    <li><a href="">Calligraphy</a></li>
                                 </ul>
                             </div>
                             <div class="service-body ">

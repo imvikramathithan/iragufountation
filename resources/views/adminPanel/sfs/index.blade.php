@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="mt-4">Service Students</h1>
     <a href="{{ route('serviceStudents.create') }}" class="btn btn-primary mb-3">Add New Service Student</a>
-    <a href="{{ route('courses.create') }}" class="btn btn-primary">Add Courses</a>
+    <a href="{{ route('courses.create') }}" class="btn btn-primary mb-3">Add Courses</a>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

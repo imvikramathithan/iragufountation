@@ -18,7 +18,51 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-   
+   <style>
+
+.course-dropdown {
+    position: relative;
+}
+
+.subjects-dropdown {
+    display: none; /* Initially hidden */
+    position: absolute;
+    left: 100%; /* Aligns to the right of the parent */
+    top: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.course-dropdown:hover .subjects-dropdown {
+    display: block; /* Show on hover */
+}
+
+.course-link {
+    display: block;
+    padding: 5px 10px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.course-link:hover {
+    background-color: #f0f0f0;
+}
+
+.subject-link {
+    display: block;
+    padding: 5px;
+    color: #333;
+    text-decoration: none;
+}
+
+.subject-link:hover {
+    background-color: #f0f0f0;
+}
+
+   </style>
 </head>
             <body>
                 <div id="preloader">
@@ -40,37 +84,40 @@
                                         <a class="nav-link two" aria-current="page" href="{{route('home')}}">Home</a>
                                         <a class="nav-link two" href="{{route('home')}}/{{ url('#about-us') }}">About Us</a>
                                     <div class="sfsdropdown">
-                                        <p class="nav-link two">For Students</p>
-                                        <div class="sfslist animate__animated animate__slideInDown">
-                                            @foreach($courses as $course)
-                                                <div class="{{ strtolower($course->slug) }}dropdown">
-                                                    <a href="{{ route('services.student', $course->slug) }}">{{ $course->course_name }}</a>
-                                                    @if($course->services->isNotEmpty())
-                                                        <div class="dropright">
-                                                            @foreach($course->services as $service)
-                                                                <a href="{{ route('services.student', $course->slug) }}#{{ $service->slug }}">
-                                                                    {{ $service->name }}
-                                                                </a>
-                                                            @endforeach
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                     <div class="sfmdropdown">
-                                            <p class="nav-link two" href=""> For Management</p>
-                                            <div class="sfmlist animate__animated animate__slideInDown">
-                                                <a href="{{route('services.management')}}/">Setting up Schools</a>
-                                                <a href="{{route('services.management')}}/{{url('#curriculam')}}">Curriculum and Support</a>
-                                                <a href="{{route('services.management')}}/{{url('#Recruitment')}}">Recruitment</a>
-                                                <a href="{{route('services.management')}}/{{url('#training')}}">Training & Development</a>
-                                                <a href="{{route('services.management')}}/{{url('#studio')}}">Studio</a>
-                                                <a href="{{route('services.management')}}/{{url('#eventmanagement')}}">Event Management</a>
-                                                <a href="{{route('services.management')}}/{{url('#guidance')}}">Guidance & Counselling</a>
-                                                <a href="{{route('services.management')}}/{{url('#nlbandalbe')}}">NLP & ABLE</a>
+                                            <p class="nav-link two">For Students</p>
+                                            <div class="sfslist animate__animated animate__slideInDown">
+                                                @foreach($courses as $course)
+                                                    <div class="course-dropdown">
+                                                        <!-- Course name -->
+                                                        <a href="{{ route('services.student.show', $course->slug) }}" class="course-link">
+                                                            {{ $course->course_name }}
+                                                        </a>
+
+                                                        @if($course->services->isNotEmpty())
+                                                            <!-- Subjects dropdown (shown on hover) -->
+                                                            <div class="subjects-dropdown">
+                                                                @foreach($course->services as $service)
+                                                                    <a href="{{ route('services.student.show', $course->slug) }}#{{ $service->slug }}" class="subject-link">
+                                                                        {{ $service->name }}
+                                                                     </a>
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                @endforeach
                                             </div>
-                                        </div>
+                                    </div>
+
+                                     <div class="sfmdropdown">
+                                          <p class="nav-link two">For Management</p>
+                                                <div class="sfmlist animate__animated animate__slideInDown">
+                                                    @foreach($managementServices as $service)
+                                                        <a href="{{ route('services.management') }}#{{ $service->slug }}">
+                                                            {{ $service->title }}
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                    </div>
                                         <a href="{{route('home')}}/{{ url('#gallery') }}" class="nav-link two">Gallery</a>
                                         <a href="{{route('home')}}/{{ url('#testimonials')}}" class="nav-link two">Testimonials</a>
                                         <a href="{{route('home')}}/{{ url('#contact-us')}}" class="nav-link two">Contact Us</a>
@@ -149,7 +196,7 @@
                     <i class="fa-solid fa-xmark"></i>
                     </div>
                     <div class="stutentq">
-                        <form action="{{route('send.contact_mail')}}"  method="post" class="form-qurey">
+                        <form action="{{route('contact.submit')}}"  method="post" class="form-qurey">
                              @csrf
                             @if(session('contact_success'))
                                 <div class="alert alert-success">
@@ -172,7 +219,7 @@
                         </form>
                     </div>
                     <div class="managenentq">
-                        <form action="{{route('send.management_mail')}}"  method="POST" class="form-qurey">
+                        <form action="{{route('management.query.submit')}}"  method="POST" class="form-qurey">
                             @csrf
                            @if(session('management_success'))
                                 <div class="alert alert-success">
@@ -233,46 +280,26 @@
                                 <h6 class="foot-iragu-title animate-slide-right"> <b>For Students</b></h6>
                                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
                                 <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                <a href="{{route('services.student.handwriting')}}/{{url('#Handwriting')}}" class="nav-link">Handwriting</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('services.student')}}/{{url('#communicative')}}" class="nav-link">Communicative English</a>
-                            </li>
-                            <li class="nav-item">
-                            <a href="{{route('services.student')}}/{{url('#science')}}" class="nav-link">Aeromodelling</a>
-                        </li>
-                            
-                        </ul>
+                                @foreach($courses as $course)
+                                    <li class="nav-item">
+                                   <a href="{{ route('services.student.show', $course->slug) }}" class="nav-link">
+                                                            {{ $course->course_name }}
+                                                        </a>
+                                    </li>
+                                @endforeach  
+                                </ul>
                             </div>
                             <div class="col-md-3">
                                 <h6 class="foot-iragu-title animate-slide-right"> <b>For Management</b></h6>
                                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
                                 <ul class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="{{route('services.management')}}" class="nav-link">Setting up Schools</a>
+                                         @foreach($managementServices as $service)
+                                                        <a href="{{ route('services.management') }}#{{ $service->slug }}" class="nav-link">
+                                                            {{ $service->title }}
+                                                        </a>
+                                                    @endforeach
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="{{route('services.management')}}/{{url('#curriculam')}}" class="nav-link">Curriculum and Support</a>
-                                    </li>
-                                    <li class="nav-item ">
-                                        <a href="{{route('services.management')}}/{{url('#Recruitment')}}" class="nav-link">Recruitment</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{route('services.management')}}/{{url('#training')}}" class="nav-link">Training & Development</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{route('services.management')}}/{{url('#studio')}}" class="nav-link">Studio</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a href="{{route('services.management')}}/{{url('#eventmanagement')}}" class="nav-link">Event Management</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{route('services.management')}}/{{url('#guidance')}}" class="nav-link">Guidance & Counselling</a>
-                                </li>
-                                <li class="nav-item">
-                                <a href="{{route('services.management')}}/{{url('#nlbandalbe')}}" class="nav-link">NLP & ABLE</a>
-                            </li>
                                 </ul>
                             </div>
                             <div class="col-md-3">
