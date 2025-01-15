@@ -90,7 +90,7 @@ body {
 
         .container-admin {
             
-            padding: 60px;
+            padding: 80px;
             transition: margin-left 0.3s ease-in-out;
             
         }

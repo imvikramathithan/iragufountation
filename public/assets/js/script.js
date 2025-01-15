@@ -1,8 +1,14 @@
 let toggle = document.querySelector(".toggle");
 let menu = document.querySelector(".menu");
 
-toggle.addEventListener("click", function () {
-    menu.classList.toggle("active");
+toggle.addEventListener("mouseenter", function () {
+    menu.classList.add("active");
+});
+
+toggle.addEventListener("mouseleave", function () {
+    setTimeout(function () {
+        menu.classList.remove("active");
+    }, 2000); // Delay of 1000 milliseconds (1 second)
 });
 
 /*=============== SWIPER JS ===============*/

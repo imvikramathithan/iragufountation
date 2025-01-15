@@ -81,7 +81,7 @@
         </div>
 <div class="course-section " style="overflow: hidden;">
     @foreach($serviceManagement  as $index => $service)
-        <div class="zigzag-container {{ $loop->even ? 'left animate-slide-left' : 'right animate-slide-right' }} ">
+        <div class="zigzag-container {{ $loop->even ? 'left ' : 'right ' }} ">
             <div id="{{ $service->slug }}" class="content-box" 
                 style="
                     background-image: linear-gradient(
@@ -96,7 +96,7 @@
                </div>
 
                 <div class="content-text">
-                    <div class="qoutes">{{$service->quotes}}</div>
+                    <div class="qoutes">"{{$service->quotes}}"</div>
                     <p  style="text-align: justify;">
                         {{ Str::limit($service->description, 150) }}
                         <span class="read-more animate__animated animate__fadeInUp">

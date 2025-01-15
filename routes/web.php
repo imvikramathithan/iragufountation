@@ -77,6 +77,8 @@ Route::prefix('services')->group(function () {
     Route::get('/', [ServiceController::class, 'serviceforstudent'])->name('services.student');
     Route::get('/{slug}', [ServiceController::class, 'showStudentService'])->name('services.student.show');
     });
+   
+
 });
 
 // Mail Routes

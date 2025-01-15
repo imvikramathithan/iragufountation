@@ -1,6 +1,7 @@
 @extends('layouts.adminheader')
 
 @section('content')
+<h2>Users List</h2>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -11,14 +12,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-
-            <!-- User List Card -->
-            <div class="card shadow-lg">
-                <div class="card-header text-center bg text-white">
-                    <h4>{{ __('Users List') }}</h4>
-                </div>
-                <div class="card-body">
-                   
 
                     <!-- Table displaying the users -->
                     <table class="table table-bordered">
@@ -48,7 +41,8 @@
                     <div class="d-flex justify-content-center">
                         {{ $users->links() }}
                     </div>
-                </div>
+            <!-- User List Card -->
+          
             </div>
         </div>
     </div>

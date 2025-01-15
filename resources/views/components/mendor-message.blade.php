@@ -36,4 +36,20 @@
        </div>
        <br><br>
 </div>
+<script>
+   // Show more functionality
+    function showMore(element) {
+        const parent = element.closest('p');
+        const readMoreSpan = parent.querySelector('.read-more');
+        const showMoreSpan = parent.querySelector('.show-more');
+
+        if (readMoreSpan.style.display === 'none' || readMoreSpan.style.display === '') {
+            readMoreSpan.style.display = 'inline';
+            showMoreSpan.innerText = 'Show Less';
+        } else {
+            readMoreSpan.style.display = 'none';
+            showMoreSpan.innerText = 'Read More';
+        }
+    }
+</script>
 {{-- mentormessage --}}

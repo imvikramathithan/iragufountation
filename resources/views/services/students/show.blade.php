@@ -77,7 +77,13 @@ border-radius: 10px;
     text-decoration: none;
     border-radius: 5px;
 }
-
+.course-name{
+    
+    font-size: 50px;
+    font-family: "Carattere", cursive;
+    font-weight: 800;
+    font-style: normal;
+}
 </style>
 
 @extends('layouts.app')
@@ -146,7 +152,7 @@ border-radius: 10px;
         <!-- General course content -->
         <div class="course">
             <h1 class="display">Service for Students</h1>
-            <h3 >{{ $course->course_name }}</h3>
+            <h3 class="course-name">{{ $course->course_name }}</h3>
         </div>
     @endif
 

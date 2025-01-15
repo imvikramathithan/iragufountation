@@ -1,10 +1,31 @@
 <style>
-  .team-container {
+.team-container {
     display: flex;
     flex-wrap: wrap;
+    gap: 10px; /* Adjust spacing between items */
     justify-content: center;
-    gap: 2px; /* Adjust as needed */
+    align-items: flex-start;
 }
+
+
+
+.team-container .team-item:nth-child(odd) {
+    margin-top: 20px; /* Stagger odd rows */
+}
+
+@media (max-width: 480px) {
+  
+    .team-container .team-item:nth-child(odd) {
+        margin-top: 5px; /* Adjust spacing */
+    }
+
+    .details {
+        font-size: 10px; /* Smaller font for text */
+    }
+}
+
+
+
 
 </style>
 {{--Iragu Team--}}
@@ -17,19 +38,19 @@
          <div class="col-md-8 teams-col2">
             <div class="team-container">
                 @foreach($teamMembers as $teamMember)
-                  <div class="team-item">
-                      @if($teamMember->image)
-                          <img class="shape" src="{{ asset('storage/' . $teamMember->image) }}" alt="{{ $teamMember->name }}">
-                      @else
-                          <img class="shape" src="{{ asset('assets/img/default_image.jpg') }}" alt="Default Image">
-                      @endif
-                      <div class="details">
-                          <div class="name">{{ $teamMember->name }}</div>
-                           <div class="role">{{ $teamMember->role }}</div>
-                      </div>
-                  </div>
-                @endforeach
+                    <div class="team-item">
+                        @if($teamMember->image)
+                        <img class="shape" src="{{ asset('storage/' . $teamMember->image) }}" alt="{{ $teamMember->name }}">
+                        @else
+                        <img class="shape" src="{{ asset('assets/img/default_image.jpg') }}" alt="Default Image">
+                        @endif
+                        <div class="details">
+                            <div class="name">{{ $teamMember->name }}</div>
+                        </div>
+                    </div>
+                    @endforeach
             </div>
+
           </div>
      </div>
  </div>

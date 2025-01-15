@@ -27,7 +27,7 @@ class ServiceManagementController extends Controller
             'bg_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10048',
             'quotes' => 'nullable|string',
             'description' => 'nullable|string',
-            'brochure' => 'nullable|mimes:pdf|max:20048',
+            'brochure' => 'nullable|mimes:pdf|max:200048',
         ]);
 
         $data = $request->all();
@@ -61,10 +61,10 @@ class ServiceManagementController extends Controller
         $request->validate([
             'title' => 'nullable|string|max:255',
             'slug' => 'nullable|string|unique:service_management,slug,' . $serviceManagement->id,
-            'bg_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'bg_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:200048',
             'quotes' => 'nullable|string',
             'description' => 'nullable|string',
-            'brochure' => 'nullable|mimes:pdf|max:2048',
+            'brochure' => 'nullable|mimes:pdf|max:200048',
         ]);
 
         $data = $request->all();

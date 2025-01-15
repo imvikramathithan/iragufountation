@@ -29,16 +29,22 @@ class CampsController extends Controller
      */
     public function store(Request $request)
     {
-      $validated = $request->validate([
+       
+                $validated = $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp',
             'caption' => 'nullable|string|max:255',
         ]);
 
+        // Ensure a value is always present for 'caption'
+        $validated['caption'] = $validated['caption'] ?? 'Default Caption';
+
+        // Store the uploaded image
         $imagePath = $request->file('image')->store('camps', 'public');
 
+        // Create the record using validated data
         Camps::create([
             'image' => $imagePath,
-            'caption' => $request->caption,
+            'caption' => $validated['caption'], // Use the processed caption value
         ]);
 
         return redirect()->route('camps.index')->with('success', 'Camps Image added');

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
       <x-slider />
-      <x-services-page/>
+       {{-- <x-services-page  /> --}}
       <x-about-us/>
       <x-mendor-message/>
       <x-md-message/>
@@ -12,4 +12,6 @@
       <x-testimonial/>
       <x-campaign-page/>
       <x-conduct-us/>
+<script src="{{asset('assets/js/scrollreveal.js')}}"></script>
+
 @endsection
